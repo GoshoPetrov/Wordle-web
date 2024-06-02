@@ -1,0 +1,84 @@
+.word {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.word div{
+    border: 2px solid black;
+    width: 50px;
+    height: 50px;
+
+    font-size: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.correct{
+    background-color: green;
+}
+
+.missplaced{
+    background-color: yellow;
+}
+
+.incorrect{
+    background-color: gray;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    align-items: center;
+}
+
+.history{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    align-items: center;
+}
+
+.keyboard-row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.keyboard-row div {
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid lightgray;
+    width: 40px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: lightgray;
+
+    font-size: 30px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.keyboard-row div.enter {
+    width: 100px;
+}
+
+.keyboard-row div.backspace {
+    width: 60px;
+}
+
