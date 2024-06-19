@@ -8,26 +8,31 @@ start();
 
 let count = 0;
 
-document.addEventListener('keydown', function(event) {
-    //console.log(`Key pressed: ${event.key}`);
+function handleInput(key) {
+    console.log(`Key pressed: ${key}`);
 
-    if(event.key == "Enter" && letters.length >= 5 && count < 6){
+    if(key == "Enter" && letters.length >= 5 && count < 6){
         commitWord();
         count++
     }
-    else if(event.key == "Backspace"){
+    else if(key == "Backspace" || key == '⌫'){
         letters.pop();
     }
     else{
         if(letters.length >= maxLetters){
             return;
         }
-        if (event.key.length === 1 && event.key.match(/[a-zA-Z]/i)) {
-            letters.push(event.key.toUpperCase());
+        if (key.length === 1 && key.match(/[a-zA-Z]/i)) {
+            letters.push(key.toUpperCase());
         }
     }
 
     displayWord();
+}
+
+document.addEventListener('keydown', function(event) {
+    //console.log(`Key pressed: ${event.key}`);
+    handleInput(event.key);
 });
 
 function displayWord(){
@@ -82,3 +87,13 @@ function start() {
 
     displayWord();
 }
+
+var keys = document.querySelectorAll('.keyboard-row div');
+
+function handleClick(e){
+    handleInput(e.target.innerHTML);
+}
+
+keys.forEach(element => {
+    element.addEventListener('click', handleClick);
+});
