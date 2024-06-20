@@ -2,9 +2,48 @@ let letters = [];
 
 const maxLetters = 5;
 
-const wordToGuess = "STAIR";
+async function getRandomWord() {
+    try {
+        const response = await fetch('words.txt');
+        const data = await response.text();
+        const wordsArray = data.split('\n').filter(word => word.trim().length > 0);
+        const randomIndex = Math.floor(Math.random() * wordsArray.length);
+        const randomWord = wordsArray[randomIndex];
+        return randomWord;
+    } catch (error) {
+        console.error('Error fetching the words:', error);
+    }
+}
 
-start();
+let wordToGuess = null;
+
+
+async function getAllWords(){
+    try {
+        const response = await fetch('allWords.txt');
+        const data = await response.text();
+        const wordsArray = data.split('\n').filter(word => word.trim().length > 0);
+        for (let i=0; i<wordsArray.length; i++) {
+            wordsArray[i] = wordsArray[i].toUpperCase().trim();
+        }
+        return wordsArray;
+    } catch (error) {
+        console.error('Error fetching the words:', error);
+    }
+}
+
+let allWords;
+getAllWords().then(wordsArray => {
+    allWords = wordsArray;
+});
+
+
+getRandomWord().then(randomWord => {
+    console.log('Random Word:', randomWord);
+    wordToGuess = randomWord.toUpperCase();
+
+    start();
+});
 
 let count = 0;
 
@@ -12,8 +51,27 @@ function handleInput(key) {
     console.log(`Key pressed: ${key}`);
 
     if(key == "Enter" && letters.length >= 5 && count < 6){
-        commitWord();
-        count++
+
+        let word = "";
+
+        for(let i=0; i<letters.length; i++){
+            word += letters[i];
+        }
+
+        //debugger;
+
+        if(allWords.indexOf(word) == -1){
+            console.log("no such word");
+            let x = document.getElementById("allLetters");
+            x.classList.remove('shake');
+            void x.offsetWidth;
+            x.classList.add('shake');
+        }
+        else{
+            commitWord();
+            count++
+        }
+
     }
     else if(key == "Backspace" || key == '⌫'){
         letters.pop();
