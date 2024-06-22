@@ -20,18 +20,6 @@ body{
     justify-content: center;
 }
 
-.correct{
-    background-color: green;
-}
-
-.missplaced{
-    background-color: yellow;
-}
-
-.incorrect{
-    background-color: gray;
-}
-
 .content{
     display: flex;
     flex-direction: column;
@@ -97,4 +85,26 @@ body{
 .shake {
     animation: shake 0.2s;
     animation-iteration-count: 3; /* Shake 3 times */
+}
+
+@media (max-width: 600px) {
+    .keyboard-row {
+        gap: 5px;
+    }
+    .keyboard-row div {
+        width: 25px;
+    }
+}
+
+
+.correct{
+    background-color: green !important;
+}
+
+.missplaced{
+    background-color: yellow !important;
+}
+
+.incorrect{
+    background-color: gray !important;
 }

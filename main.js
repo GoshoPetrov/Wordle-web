@@ -131,6 +131,7 @@ function commitWord(){
         if(letters[i] == wordToGuess[i]){
             cls = "correct";
         }
+        paintLetterKey(letters[i], cls);
         content += `<div class="${cls}">${letters[i]}</div>`;
     }
 
@@ -155,3 +156,17 @@ function handleClick(e){
 keys.forEach(element => {
     element.addEventListener('click', handleClick);
 });
+
+function paintLetterKey(letter, cls){
+
+    //debugger;
+
+    const keys = document.querySelectorAll('.keyboard-row div');
+    
+    keys.forEach((key) => {
+        if (letter == key.innerHTML) {
+            key.classList.add(cls);
+        }
+    });
+
+}
