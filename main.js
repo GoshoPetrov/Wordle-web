@@ -170,3 +170,12 @@ function paintLetterKey(letter, cls){
     });
 
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const reloadButton = document.getElementById('reloadButton');
+    
+    reloadButton.addEventListener('click', () => {
+        location.reload();
+    });
+});
+
