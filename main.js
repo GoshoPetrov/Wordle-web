@@ -2,6 +2,8 @@ let letters = [];
 
 const maxLetters = 5;
 
+let allRandomWords = "";
+
 async function getRandomWord() {
     try {
         const response = await fetch('words.txt');
@@ -9,6 +11,7 @@ async function getRandomWord() {
         const wordsArray = data.split('\n').filter(word => word.trim().length > 0);
         const randomIndex = Math.floor(Math.random() * wordsArray.length);
         const randomWord = wordsArray[randomIndex];
+        allRandomWords = randomWord;
         return randomWord;
     } catch (error) {
         console.error('Error fetching the words:', error);
@@ -83,6 +86,26 @@ function handleInput(key) {
         if (key.length === 1 && key.match(/[a-zA-Z]/i)) {
             letters.push(key.toUpperCase());
         }
+    }
+
+    if(count >= 6){
+        const correctWord = document.getElementById("displayCorrectWord");
+        //correctWord.textContent = getRandomWord();
+
+        //getRandomWord().then(randomWord => correctWord.textContent = randomWord);
+
+        //debugger;
+
+        correctWord.textContent = allRandomWords;
+
+        /*
+        getRandomWord().then(randomWord => {
+            console.log('Random Word:', randomWord);
+            wordToGuess = randomWord.toUpperCase();
+        
+            start();
+        });
+        */
     }
 
     displayWord();
@@ -178,4 +201,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
         location.reload();
     });
 });
+
 
