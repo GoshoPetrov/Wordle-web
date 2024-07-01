@@ -108,3 +108,23 @@ body{
 .incorrect{
     background-color: gray !important;
 }
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.correctWord{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 1 50px; 
+    background-color: #4CAF50;
+    color: white;
+    font-size: 24px; 
+    text-align: center;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
