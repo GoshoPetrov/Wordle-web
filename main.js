@@ -63,6 +63,15 @@ function handleInput(key) {
 
         //debugger;
 
+        let rmd = allRandomWords.toLocaleUpperCase().trim();
+
+        if(word == rmd){
+            gameWon();
+            //return;
+        }
+
+        //debugger;
+
         if(allWords.indexOf(word) == -1){
             console.log("no such word");
             let x = document.getElementById("allLetters");
@@ -202,4 +211,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 });
 
+
+function gameWon(){
+    const popup = document.getElementById('popup');
+    popup.classList.remove('hidden');
+}
 
