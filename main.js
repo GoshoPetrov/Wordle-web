@@ -165,6 +165,8 @@ function commitWord(){
         }
         paintLetterKey(letters[i], cls);
         content += `<div class="${cls}">${letters[i]}</div>`;
+
+        cls = "incorrect";
     }
 
     history.innerHTML += `<div class="word">${content}</div>`;
