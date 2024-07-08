@@ -219,3 +219,14 @@ function gameWon(){
     popup.classList.remove('hidden');
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    
+    var hintButton = document.getElementById("hintButton");
+
+    // Add an event listener to the button
+    hintButton.addEventListener("click", function() {
+        
+        alert(`The first letter of the word is ${allRandomWords[0].toUpperCase()} and the last is ${allRandomWords[allRandomWords.length - 2].toUpperCase()}`);
+    });
+});
+
