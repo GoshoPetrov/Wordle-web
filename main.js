@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Add an event listener to the button
     hintButton.addEventListener("click", function() {
         
-        alert(`The first letter of the word is ${allRandomWords[0].toUpperCase()} and the last is ${allRandomWords[allRandomWords.length - 2].toUpperCase()}`);
+        alert(`The first letter of the word is ${allRandomWords[0].toUpperCase()} and the last is ${allRandomWords[allRandomWords.length - 1].toUpperCase()}`);
     });
 });
 
